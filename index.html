@@ -32,7 +32,7 @@
     <div class="d-flex align-items-center mb-2 mt-2">
       
       <input type="text" class="form-control" id="plan-input" placeholder="Enter a plan here">
-      <button type="button" class="btn btn-primary ms-1 text-nowrap">
+      <button type="button" id="add-btn" class="btn btn-primary ms-1 text-nowrap">
         <i class="bi bi-plus"></i>
         Add
       </button>
@@ -62,6 +62,29 @@
   
   <script>
     /* JS Code */
+    let addBtn = document.querySelector("#add-btn");
+    console.log(addBtn);
+
+    addBtn.addEventListener("click", () => {
+      // 1. Read the text in #plan-input.
+      let input = document.querySelector("#plan-input");
+      let plan = input.value;
+
+      if (!plan.length) return;
+
+      // 2. Append the text to #plan-list.
+      let newPlan = document.createElement("div");
+      newPlan.classList.add("plan", "bg-light", "p-1", "rounded-2", "ps-2");
+      newPlan.textContent = plan;
+      
+      let planList = document.querySelector("#plan-list");
+      planList.appendChild(newPlan);
+
+      // 3. Clear #plan-input.
+      input.value = "";
+    });
+    
+
   </script>
 </body>
 
